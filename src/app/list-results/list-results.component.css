@@ -1,0 +1,20 @@
+h4 {
+    display: inline;
+}
+.mat-list-item {
+    height: 70px;
+}
+
+.mat-card {
+    padding: 20px;
+    width: 90%;
+}
+
+.mat-list-item-content, .result-btn {
+    height: 100%;
+    width: 100%;
+}
+
+.mat-raised-button {
+    text-align: left;
+}
