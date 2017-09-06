@@ -1,0 +1,14 @@
+.search-git-form {
+    min-width: 400px;
+    max-width: 800px;
+    width: 100%;
+}
+  
+.full-width {
+    width: 100%;
+}
+
+.mat-form-field {
+    font-size: 30px;
+    line-height: 1.3;
+}
