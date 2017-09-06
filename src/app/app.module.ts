@@ -6,21 +6,21 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './shared/vendor/material.module';
 import { SearchBarComponent } from './search-bar/search-bar.component';
-import { ListResultsComponent } from './list-results/list-results.component';
+import { ResultListComponent } from './search-bar/result-list.component';
 import { RepoDetailsComponent } from './repo-details/repo-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBarComponent,
-    ListResultsComponent,
+    ResultListComponent,
     RepoDetailsComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
       { path: 'home', component: SearchBarComponent },
-      { path: 'repo/:id', component: ListResultsComponent},
+      { path: 'repo/:id', component: RepoDetailsComponent},
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', redirectTo: 'home', pathMatch: 'full' }
     ]),

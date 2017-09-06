@@ -3,4 +3,4 @@
     <input #searchKey (keyup.enter)="searchRepo(searchKey.value)" mdInput placeholder="Search Repositories">
   </md-form-field>
 </form>
-<app-list-results *ngIf="results" [results]="results"></app-list-results>
+<app-result-list *ngIf="results" [results]="results"></app-result-list>
