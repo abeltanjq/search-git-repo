@@ -18,10 +18,10 @@ export class SearchBarComponent implements OnInit {
   searchRepo(keyword) {
     this.searchTerm = keyword;
     this.results = [
-      {owner: 'John', name: 'john repo name'},
-      {owner: 'Ferlicia', name: 'F for Fun'},
-      {owner: 'Abrahma', name: 'Abrakadabra library'},
-      {owner: 'Tesla', name: 'Power of AC lib'}
+      {owner: 'John', name: 'john repo name', id: 'r1'},
+      {owner: 'Ferlicia', name: 'F for Fun', id: 'r2'},
+      {owner: 'Abrahma', name: 'Abrakadabra library', id: 'r3'},
+      {owner: 'Tesla', name: 'Power of AC lib', id: 'r4'}
     ];
   }
 }

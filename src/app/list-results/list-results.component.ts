@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ListResultsComponent implements OnInit {
   @Input() results: Array<object>;
-
+  
   constructor() { }
 
   ngOnInit() {
