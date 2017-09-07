@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { GitApiService } from '../shared/git-api.service';
+
 @Component({
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.css']
@@ -8,19 +10,20 @@ export class SearchBarComponent implements OnInit {
 
   searchTerm: string;
   results: Array<object>;
+  sortOptions = ['stars', 'forks', 'updated'];
+  order = ['asc', 'desc'];
 
-  constructor() { }
+  constructor(private gas: GitApiService) { }
 
   ngOnInit() {
   }
 
-  searchRepo(keyword) {
-    this.searchTerm = keyword;
-    this.results = [
-      {owner: 'John', name: 'john repo name', id: 'r1'},
-      {owner: 'Ferlicia', name: 'F for Fun', id: 'r2'},
-      {owner: 'Abrahma', name: 'Abrakadabra library', id: 'r3'},
-      {owner: 'Tesla', name: 'Power of AC lib', id: 'r4'}
-    ];
+  searchRepo(searchTerm) {
+    this.searchTerm = searchTerm;
+    // Todo: write error handling
+    this.gas.searchRepos(searchTerm, this.sortOptions[2], this.order[1])
+            .subscribe(res => {
+              this.results = res.items;
+            });
   }
 }
