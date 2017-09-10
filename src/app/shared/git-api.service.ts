@@ -7,6 +7,7 @@ import { IGitResponse } from './git-res.interface';
 @Injectable()
 export class GitApiService {
   baseUrl = 'https://api.github.com/search/repositories?q=';
+  currRepos: Array<any>;
 
   constructor(private http: HttpClient) { }
 
@@ -16,4 +17,20 @@ export class GitApiService {
     return this.http.get<IGitResponse>(query);
   }
 
+  storeCurrRepos(currRepos: Array<any>) {
+    this.currRepos = currRepos;
+  }
+
+  getCurrRepos(): Array<any> {
+    return this.currRepos || [];
+  }
+  getRepoDetail(id: number) {
+    if (this.currRepos) {
+      return this.currRepos.find(repo => {
+        return repo.id == id;
+      });
+    } else {
+      console.log('Repo not found, go to 404');
+    }
+  }
 }

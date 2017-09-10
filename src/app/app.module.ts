@@ -10,6 +10,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { ResultListComponent } from './search-bar/result-list.component';
 import { RepoDetailsComponent } from './repo-details/repo-details.component';
 import { GitApiService } from './shared/git-api.service';
+import { SearchBarStateService } from './search-bar/search-bar-state.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { GitApiService } from './shared/git-api.service';
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [GitApiService],
+  providers: [GitApiService, SearchBarStateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 <form class="search-git-form" (keydown.enter)="$event.preventDefault()">
   <md-form-field class="full-width">
-    <input #searchKey (keyup.enter)="searchRepo(searchKey.value)" mdInput placeholder="Search Repositories">
+    <input #searchKey (keyup.enter)="searchRepo(searchKey.value)" mdInput placeholder="Search Repositories" [value]="searchTerm">
   </md-form-field>
 </form>
 <app-result-list *ngIf="results" [results]="results"></app-result-list>

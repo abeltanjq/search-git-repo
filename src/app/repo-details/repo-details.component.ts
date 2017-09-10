@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { GitApiService } from '../shared/git-api.service';
 
 @Component({
   selector: 'app-repo-details',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RepoDetailsComponent implements OnInit {
 
-  constructor() { }
+  repo: any;
+
+  constructor(private route: ActivatedRoute, private gas: GitApiService ) { }
 
   ngOnInit() {
+    this.repo = this.gas.getRepoDetail(this.route.snapshot.params['id']);
   }
 
 }
