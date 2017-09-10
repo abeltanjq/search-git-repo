@@ -13,7 +13,6 @@ export class GitApiService {
 
   searchRepos(searchTerm: string, sortOption: string, order: string): Observable<any> {
     const query = this.baseUrl + searchTerm + `&sort=` + sortOption + `&order=` + order;
-    console.log(query);
     return this.http.get<IGitResponse>(query);
   }
 
