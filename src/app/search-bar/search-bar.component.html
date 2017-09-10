@@ -1,6 +1,20 @@
-<form class="search-git-form" (keydown.enter)="$event.preventDefault()">
-  <md-form-field class="full-width">
-    <input #searchKey (keyup.enter)="searchRepo(searchKey.value)" mdInput placeholder="Search Repositories" [value]="searchTerm">
-  </md-form-field>
-</form>
+<div class="search-grp">
+  <form class="search-git-form" (keydown.enter)="$event.preventDefault()">
+    <md-form-field class="full-width">
+      <input #searchKey (keyup.enter)="searchRepo(searchKey.value)" mdInput placeholder="Search Repositories" [value]="searchTerm">
+      <!--md-error *ngIf="searchTermFormControl.hasError('required')">
+          Please at least <strong>one</strong> keyword.
+      </md-error-->
+    </md-form-field>
+  </form>
+  <button md-icon-button (click)="clearSearchTerm($event)" id="sb-clear-btn">
+    <md-icon class="sb-clear" aria-label="clear field">clear</md-icon>
+  </button>
+</div>
+<md-toolbar *ngIf="isInvalid" color="warn">  
+    <div>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Invalid search term. Try another keyword.</strong>
+    </div>
+</md-toolbar>
+<md-spinner *ngIf="isSearching"></md-spinner>
 <app-result-list *ngIf="results" [results]="results"></app-result-list>

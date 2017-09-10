@@ -1,3 +1,18 @@
+#sb-result-list {
+    min-height: 150px;
+    max-height: 500px;
+    overflow: scroll;
+    background-color: lightgrey;
+}
+
+#header-left, #header-right {
+    flex-grow: 1;
+}
+
+#header-right {
+    text-align: right;
+}
+
 h4 {
     display: inline;
 }
@@ -15,6 +30,6 @@ h4 {
     width: 100%;
 }
 
-.mat-raised-button {
+.mat-button {
     text-align: left;
 }

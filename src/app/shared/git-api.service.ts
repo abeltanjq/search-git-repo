@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 import { IGitResponse } from './git-res.interface';
 
@@ -13,7 +15,8 @@ export class GitApiService {
 
   searchRepos(searchTerm: string, sortOption: string, order: string): Observable<any> {
     const query = this.baseUrl + searchTerm + `&sort=` + sortOption + `&order=` + order;
-    return this.http.get<IGitResponse>(query);
+    return this.http.get<IGitResponse>(query)
+                    .catch(this.handleError);
   }
 
   storeCurrRepos(currRepos: Array<any>) {
@@ -21,7 +24,7 @@ export class GitApiService {
   }
 
   getCurrRepos(): Array<any> {
-    return this.currRepos || [];
+    return this.currRepos;
   }
   getRepoDetail(id: number) {
     if (this.currRepos) {
@@ -29,7 +32,11 @@ export class GitApiService {
         return repo.id == id;
       });
     } else {
-      console.log('Repo not found, go to 404');
+      console.log('Repo not found, go to home');
     }
+  }
+
+  handleError(error) {
+    return Observable.throw(error);
   }
 }

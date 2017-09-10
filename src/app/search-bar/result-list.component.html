@@ -1,8 +1,19 @@
-<md-list>
-    <md-list-item *ngFor="let result of results">
-      <!--md-card><strong>{{result.owner}}</strong> / {{result.name}}</md-card-->
-      <button md-raised-button class="result-btn" [routerLink]="['/repo', result.id]">
-        <strong>{{result.owner.login}}</strong> / <i>{{result.name}}</i>
-      </button>
-    </md-list-item>
+<md-toolbar *ngIf="results.length < 1" color="warn">  
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>No results found.  Try another search term.</strong>
+</md-toolbar>
+<md-toolbar *ngIf="results.length > 1" color="primary">  
+    <div id="header-left">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Owner</strong>&nbsp;&nbsp;/&nbsp;&nbsp;<i>Repo Name</i>
+    </div>
+    <div id="header-right">
+        <strong>Total Results: </strong> {{results.length}}
+    </div>
+</md-toolbar>
+<md-list id="sb-result-list" *ngIf="results.length > 1"> 
+  <md-list-item *ngFor="let result of results; let i = index;">
+    <span>{{i+1}}.</span>&nbsp;&nbsp;&nbsp;
+    <button md-button class="result-btn" [routerLink]="['/repo', result.id]">
+      <strong>{{result.owner.login}}</strong> / <i>{{result.name}}</i>
+    </button>
+  </md-list-item>
 </md-list>

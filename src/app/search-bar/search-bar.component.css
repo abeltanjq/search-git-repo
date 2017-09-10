@@ -1,7 +1,16 @@
+.search-grp {
+    display: flex;
+}
+
 .search-git-form {
     min-width: 400px;
     max-width: 800px;
     width: 100%;
+    flex-grow: 1;
+}
+
+#sb-clear-btn {
+    align-self: center;
 }
   
 .full-width {
@@ -11,4 +20,8 @@
 .mat-form-field {
     font-size: 30px;
     line-height: 1.3;
+}
+
+.sb-clear {
+    font-size: 1.2em;
 }
