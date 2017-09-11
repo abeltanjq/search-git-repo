@@ -4,6 +4,9 @@
       <input #searchKey (keyup.enter)="searchRepo(searchKey.value)" mdInput placeholder="Search Repositories" [value]="searchTerm">
     </md-form-field>
   </form>
+  <button md-icon-button (click)="searchRepo(searchKey.value)" id="sb-search-btn">
+      <md-icon class="sb-search" aria-label="search">search</md-icon>
+    </button>
   <button md-icon-button (click)="clearSearchTerm($event)" id="sb-clear-btn">
     <md-icon class="sb-clear" aria-label="clear field">clear</md-icon>
   </button>
@@ -26,7 +29,7 @@
     </form>
   </div>
 </div>
-<md-toolbar *ngIf="isInvalid" color="warn">  
+<md-toolbar id="tb-invalid-search" *ngIf="isInvalid" color="warn">  
     <div>
       &nbsp;&nbsp;&nbsp;<strong>Invalid search term. Try another keyword.</strong>
     </div>
