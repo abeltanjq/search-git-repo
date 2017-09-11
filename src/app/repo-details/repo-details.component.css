@@ -1,7 +1,10 @@
-.mat-card-title {
-    font-size: 1.5em;
+.repo-details-container {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
 }
 
-.mat-card-subtitle {
+.tb-title {
     font-size: 1em;
+    width: 100%;
 }

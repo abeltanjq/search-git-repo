@@ -2,7 +2,9 @@
     display: flex;
     justify-content: center;
 }
-
+.mat-toolbar {
+    font-size: 1.23em;
+}
 .search-git-form {
     max-width: 800px;
     width: 100%;

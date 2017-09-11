@@ -1,15 +1,15 @@
-<div *ngIf="repo">
+<div *ngIf="repo" class="repo-details-container">
   <button md-raised-button [routerLink]="['/home']">BACK</button>
+  <md-toolbar color="primary">
+      &nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="tb-title"><strong>{{repo.owner.login}}</strong> / <i>{{repo.name}}</i></div>
+  </md-toolbar>
   <md-card class="repo-details">
-      <md-card-header>
-        <md-card-title><strong>{{repo.owner.login}}</strong> / <i>{{repo.name}}</i></md-card-title>
-        <md-card-subtitle>Owner/ Repo Name</md-card-subtitle>
-      </md-card-header>
-      <md-card-content>
+      <md-card-content> 
         <md-list>
             <md-list-item><strong>Language:</strong>&nbsp;&nbsp;<span>{{repo.language}}</span></md-list-item>
             <md-list-item><strong>Followers:</strong>&nbsp;&nbsp;<span>{{repo.watchers_count}}</span></md-list-item>
-            <md-list-item><strong>Url:</strong>&nbsp;&nbsp;<a href="{{repo.html_url}}">{{repo.html_url}}</a></md-list-item>
+            <md-list-item><strong>Url:</strong>&nbsp;&nbsp;<a href="{{repo.html_url}}" target="_blank">{{repo.html_url}}</a></md-list-item>
             <md-list-item><strong>Description:</strong>&nbsp;&nbsp;<span>{{repo.description}}</span></md-list-item>
         </md-list>
       </md-card-content>

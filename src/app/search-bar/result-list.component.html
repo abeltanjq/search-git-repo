@@ -1,13 +1,15 @@
 <div class="result-list">
-  <md-toolbar *ngIf="results.length < 1" color="warn">  
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>No results found.  Try another search term.</strong>
+  <md-toolbar *ngIf="results.length == 0" color="warn">  
+        &nbsp;&nbsp;&nbsp;<span>No results found.  Try another search term.</span>
   </md-toolbar>
   <md-toolbar *ngIf="results.length > 1" color="primary">  
-      <div id="header-left">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Owner</strong>&nbsp;&nbsp;/&nbsp;&nbsp;<i>Repo Name</i>
-      </div>
-      <div id="header-right">
-          <strong>Total Results: </strong> {{results.length}}
+      <div class="row-container">
+          <div id="header-left">
+            &nbsp;&nbsp;&nbsp;<strong>Owner</strong>&nbsp;&nbsp;/&nbsp;&nbsp;<i>Repo Name</i>
+          </div>
+          <div id="header-right">
+            &nbsp;&nbsp;&nbsp;<strong>Total Results: </strong> {{results.length}}
+          </div>
       </div>
   </md-toolbar>
   <md-list id="sb-result-list" *ngIf="results.length > 1"> 
