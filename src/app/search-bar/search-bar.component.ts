@@ -3,6 +3,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 import { GitApiService } from '../shared/git-api.service';
 import { SearchBarStateService } from './search-bar-state.service';
+import { gitRepoServiceList } from '../shared/git-repository-services-list';
 
 @Component({
   templateUrl: './search-bar.component.html',
@@ -14,15 +15,25 @@ export class SearchBarComponent implements OnInit {
   results: Array<object>;
   isSearching = false;
   isInvalid = false;
-  // put this in git service
-  sortOptions = ['stars', 'forks', 'updated'];
-  order = ['asc', 'desc'];
+  gRepos;
+  selectedGit;
+  options: object;
 
   constructor(private gas: GitApiService, private sbss:  SearchBarStateService) { }
 
   ngOnInit() {
     this.searchTerm = this.sbss.getLastSearchTerm();
     this.results = this.gas.getCurrRepos();
+    this.gRepos = gitRepoServiceList;
+    this.selectedGit = this.sbss.getSelectedGit() || this.gRepos[0];
+    this.sbss.setSelectedGit(this.selectedGit);
+    this.getOptions(this.selectedGit);
+  }
+
+  getOptions(git: string) {
+    if (git === 'GitHub') {
+      this.options = this.gas.getOptions();
+    }
   }
 
   searchRepo(searchTerm) {
@@ -31,22 +42,23 @@ export class SearchBarComponent implements OnInit {
     this.results = undefined;
     this.isInvalid = false;
     this.isSearching = true;
-
-    this.gas.searchRepos(this.searchTerm, this.sortOptions[2], this.order[1])
-            .subscribe(
-              res => {
-                this.isSearching = false;
-                this.results = res.items;
-                this.gas.storeCurrRepos(this.results);
-              },
-              (error: HttpErrorResponse) => {
-                if (error.status >= 400 && error.status < 500) {
+    if (this.selectedGit === 'GitHub') {
+      this.gas.searchRepos(this.searchTerm, this.options[0].selection, this.options[1].selection)
+              .subscribe(
+                res => {
                   this.isSearching = false;
-                  this.isInvalid = true;
-                  console.log(error);
+                  this.results = res.items;
+                  this.gas.storeCurrRepos(this.results);
+                },
+                (error: HttpErrorResponse) => {
+                  if (error.status >= 400 && error.status < 500) {
+                    this.isSearching = false;
+                    this.isInvalid = true;
+                    console.log(error);
+                  }
                 }
-              }
-          );
+            );
+    }
   }
 
   clearSearchTerm(e) {

@@ -10,11 +10,27 @@ import { IGitResponse } from './git-res.interface';
 export class GitApiService {
   baseUrl = 'https://api.github.com/search/repositories?q=';
   currRepos: Array<any>;
+  options = [
+    { name: 'Sort By',
+      value: ['stars', 'forks', 'updated'],
+      selection: 2
+    },
+    {
+      name: 'Order By',
+      value: ['asc', 'desc'],
+      selection: 1
+    }
+  ];
 
   constructor(private http: HttpClient) { }
 
-  searchRepos(searchTerm: string, sortOption: string, order: string): Observable<any> {
-    const query = this.baseUrl + searchTerm + `&sort=` + sortOption + `&order=` + order;
+  getOptions() {
+    return this.options;
+  }
+
+  searchRepos(searchTerm: string, sortOptionIndex: number, orderIndex: number): Observable<any> {
+    const query = this.baseUrl + searchTerm + `&sort=` + this.options[0].value[sortOptionIndex]
+                                            + `&order=` + this.options[1].value[orderIndex];
     return this.http.get<IGitResponse>(query)
                     .catch(this.handleError);
   }
@@ -26,6 +42,7 @@ export class GitApiService {
   getCurrRepos(): Array<any> {
     return this.currRepos;
   }
+
   getRepoDetail(id: number) {
     if (this.currRepos) {
       return this.currRepos.find(repo => {

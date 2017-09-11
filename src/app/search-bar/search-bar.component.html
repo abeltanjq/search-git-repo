@@ -8,6 +8,24 @@
     <md-icon class="sb-clear" aria-label="clear field">clear</md-icon>
   </button>
 </div>
+<div class="fm-group">
+  <form>
+    <md-select placeholder="Git Service" [(ngModel)]="selectedGit" (ngModelChange)="getOptions(selectedGit)" name="gitService">
+      <md-option *ngFor="let gRepo of gRepos" [value]="gRepo">
+        {{gRepo}}
+      </md-option>
+    </md-select>
+  </form>
+  <div class="fm-options" *ngIf="selectedGit">
+    <form *ngFor="let option of options">
+      <md-select [placeholder]="option.name" [(ngModel)]="option.selection" [name]="option.name">
+        <md-option *ngFor="let op of option.value; let i = index;" [value]="i">
+          {{op}}
+        </md-option>
+      </md-select>
+    </form>
+  </div>
+</div>
 <md-toolbar *ngIf="isInvalid" color="warn">  
     <div>
       &nbsp;&nbsp;&nbsp;<strong>Invalid search term. Try another keyword.</strong>

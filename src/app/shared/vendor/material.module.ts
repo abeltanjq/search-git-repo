@@ -6,7 +6,8 @@ import {
   MdCardModule,
   MdIconModule,
   MdToolbarModule,
-  MdProgressSpinnerModule
+  MdProgressSpinnerModule,
+  MdSelectModule
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 
@@ -14,10 +15,10 @@ import { NgModule } from '@angular/core';
   imports: [
     MdButtonModule, MdCheckboxModule, MdInputModule,
     MdListModule, MdCardModule, MdIconModule, MdToolbarModule,
-    MdProgressSpinnerModule],
+    MdProgressSpinnerModule, MdSelectModule],
   exports: [
     MdButtonModule, MdCheckboxModule, MdInputModule,
     MdListModule, MdCardModule, MdIconModule, MdToolbarModule,
-    MdProgressSpinnerModule]
+    MdProgressSpinnerModule, MdSelectModule]
 })
 export class MaterialModule {}

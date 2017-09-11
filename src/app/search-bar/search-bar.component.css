@@ -5,7 +5,8 @@
 .mat-toolbar {
     font-size: 1.23em;
 }
-.search-git-form {
+.search-git-form,
+.fm-group {
     max-width: 800px;
     width: 100%;
     flex-grow: 1;
@@ -28,6 +29,11 @@
     font-size: 1.2em;
 }
 
-#spinner {
+.fm-options form {
+    display: inline;
+}
+
+#spinner,
+.fm-group {
     margin: 0 auto;
 }
