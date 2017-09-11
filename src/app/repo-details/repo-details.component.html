@@ -1,5 +1,5 @@
 <div *ngIf="repo">
-  <button md-raised-button color="primary" [routerLink]="['/home']">BACK</button>
+  <button md-raised-button [routerLink]="['/home']">BACK</button>
   <md-card class="repo-details">
       <md-card-header>
         <md-card-title><strong>{{repo.owner.login}}</strong> / <i>{{repo.name}}</i></md-card-title>

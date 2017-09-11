@@ -1,9 +1,9 @@
 .search-grp {
     display: flex;
+    justify-content: center;
 }
 
 .search-git-form {
-    min-width: 400px;
     max-width: 800px;
     width: 100%;
     flex-grow: 1;
@@ -18,10 +18,14 @@
 }
 
 .mat-form-field {
-    font-size: 30px;
+    font-size: 2em;
     line-height: 1.3;
 }
 
 .sb-clear {
     font-size: 1.2em;
+}
+
+#spinner {
+    margin: 0 auto;
 }
