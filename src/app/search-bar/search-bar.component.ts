@@ -15,6 +15,7 @@ export class SearchBarComponent implements OnInit {
   results: Array<object>;
   isSearching = false;
   isInvalid = false;
+  errorMsg = '';
   gRepos;
   selectedGit;
   options: object;
@@ -51,10 +52,13 @@ export class SearchBarComponent implements OnInit {
                   this.gas.storeCurrRepos(this.results);
                 },
                 (error: HttpErrorResponse) => {
+                  this.isSearching = false;
+                  this.isInvalid = true;
                   if (error.status >= 400 && error.status < 500) {
-                    this.isSearching = false;
-                    this.isInvalid = true;
+                    this.errorMsg = 'Invalid search term. Try another keyword.';
                     console.log(error);
+                  } else if (error.status >= 500) {
+                    this.errorMsg = 'GitHub is currently unavailable.  Please try again later.';
                   }
                 }
             );

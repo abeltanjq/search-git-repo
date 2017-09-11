@@ -31,7 +31,7 @@
 </div>
 <md-toolbar id="tb-invalid-search" *ngIf="isInvalid" color="warn">  
     <div>
-      &nbsp;&nbsp;&nbsp;<strong>Invalid search term. Try another keyword.</strong>
+      &nbsp;&nbsp;&nbsp;<strong>{{errorMsg}}</strong>
     </div>
 </md-toolbar>
 <md-spinner id="spinner" *ngIf="isSearching"></md-spinner>
