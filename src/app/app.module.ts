@@ -24,6 +24,7 @@ import { SearchBarStateService } from './search-bar/search-bar-state.service';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    RouterModule,
     RouterModule.forRoot([
       { path: 'home', component: SearchBarComponent },
       { path: 'repo/:id', component: RepoDetailsComponent},
@@ -36,4 +37,5 @@ import { SearchBarStateService } from './search-bar/search-bar-state.service';
   providers: [GitApiService, SearchBarStateService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
